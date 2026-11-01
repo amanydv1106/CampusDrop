@@ -1,0 +1,28 @@
+{
+  "name": "campus-drop",
+  "version": "1.0.0",
+  "description": "A modern, secure, peer-to-peer file-sharing platform.",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "test:backend": "npm --prefix backend test",
+    "test:frontend": "npm --prefix frontend test",
+    "test": "npm run test:backend && npm run test:frontend",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run build:frontend",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev"
+  },
+  "keywords": [
+    "campus-drop",
+    "peer-to-peer",
+    "webrtc",
+    "file-sharing",
+    "pwa"
+  ],
+  "author": "Campus Drop Team",
+  "license": "MIT"
+}

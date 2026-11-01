@@ -36,9 +36,9 @@ export function PeerNode({
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      onSendFile(peer, file);
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      files.forEach((file) => onSendFile(peer, file));
       e.target.value = ""; // Reset
     }
   };
@@ -46,9 +46,9 @@ export function PeerNode({
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
-    const file = e.dataTransfer.files?.[0];
-    if (file) {
-      onSendFile(peer, file);
+    const files = Array.from(e.dataTransfer.files || []);
+    if (files.length > 0) {
+      files.forEach((file) => onSendFile(peer, file));
     }
   };
 
@@ -73,6 +73,7 @@ export function PeerNode({
     >
       <input
         type="file"
+        multiple
         ref={fileInputRef}
         className="hidden"
         onChange={handleFileChange}

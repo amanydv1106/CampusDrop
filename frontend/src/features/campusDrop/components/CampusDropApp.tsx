@@ -84,6 +84,24 @@ export function CampusDropApp() {
     } catch {
       // Ignore
     }
+
+    // Register PWA Service Worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+    }
+
+    // Request desktop notification permission
+    if ("Notification" in window && Notification.permission === "default") {
+      Notification.requestPermission().catch(() => {});
+    }
+
+    // Auto-join room from URL search parameters (?room=XYZ) or hash (#XYZ)
+    const searchParams = new URLSearchParams(window.location.search);
+    const queryRoom = searchParams.get("room") || window.location.hash.replace(/^#/, "").trim();
+    if (queryRoom && queryRoom.length === 5) {
+      setRoomId(queryRoom.toUpperCase());
+      setIsCurrentlyInRoom(true);
+    }
   }, []);
 
   // Save theme changes
@@ -120,6 +138,14 @@ export function CampusDropApp() {
 
       setCurrentPromptTransfer(promptTransfer);
       setActiveDialog("receive-file");
+
+      // Trigger desktop notification if tab is in background
+      if (typeof document !== "undefined" && document.hidden && "Notification" in window && Notification.permission === "granted") {
+        new Notification("Campus Drop — Incoming File", {
+          body: `${info.name} from nearby peer`,
+          icon: "/icon.svg"
+        });
+      }
     };
 
     transferMgr.onTransferProgress = (info) => {
@@ -148,6 +174,13 @@ export function CampusDropApp() {
       });
 
       if (info.status === "completed" || info.status === "error" || info.status === "cancelled") {
+        if (info.status === "completed" && typeof document !== "undefined" && document.hidden && "Notification" in window && Notification.permission === "granted") {
+          new Notification("Campus Drop — Transfer Complete", {
+            body: `File received successfully`,
+            icon: "/icon.svg"
+          });
+        }
+
         setCurrentPromptTransfer((curr) => {
           if (curr && curr.transferId === info.transferId) {
             return {

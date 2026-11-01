@@ -17,8 +17,11 @@ export class RoomManager {
     // pairingSecret (32-char hex) -> Set of peerIds
     this.pairedSecrets = new Map();
 
-    // Periodically clean expired pair keys
-    setInterval(() => this.cleanupExpiredPairKeys(), 60000);
+    // Periodically clean expired pair keys (unref so tests and scripts exit cleanly)
+    this.cleanupTimer = setInterval(() => this.cleanupExpiredPairKeys(), 60000);
+    if (this.cleanupTimer.unref) {
+      this.cleanupTimer.unref();
+    }
   }
 
   // Get a normalized local room key from client IP
