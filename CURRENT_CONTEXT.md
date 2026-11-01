@@ -1,9 +1,10 @@
 # Campus Drop — Current Context
 
 **Last Updated**: 2026-11-01  
-**Project Phase**: Phase Zero (REA Discovery) & Phase One (Reverse Engineering & Foundation Setup)  
-**Active Git Branch**: `main` (Initializing `develop`)  
-**Latest Stable Commit**: Pending baseline commit  
+**Project Phase**: Phase One (Reverse Engineering & Specification Documentation)  
+**Active Git Branch**: `develop`  
+**Latest Stable Commit**: `c3ee60a` (tagged on `main`, tracked at `origin/main` & `origin/develop`)  
+**Remote Repository**: `https://github.com/amanydv1106/CampusDrop.git`  
 
 ---
 
