@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: campusdrop-backend
+    restart: unless-stopped
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+    ports:
+      - "3001:3001"
+    networks:
+      - campusdrop-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: campusdrop-frontend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_WS_URL=ws://localhost:3001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - campusdrop-net
+
+networks:
+  campusdrop-net:
+    driver: bridge
