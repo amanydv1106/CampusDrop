@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #4285f4;
+  --paired-device-color: #00a69c;
+  --public-room-color: #ed9d01;
+  --accent-color: var(--primary-color);
+  --btn-disabled-color: #5b5b66;
+  --lt-text-color: 51, 51, 51;
+  --lt-bg-color: 255, 255, 255;
+  --lt-bg-color-secondary: #f2f2f2;
+  --lt-dialog-bg-color: #fff;
+  --lt-border-color: #757575;
+  --dt-text-color: 238, 238, 238;
+  --dt-bg-color: 0, 0, 0;
+  --dt-bg-color-secondary: #262628;
+  --dt-dialog-bg-color: #141414;
+  --dt-border-color: #757575;
+  color-scheme: light dark;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .campusdrop-shell {
+    --text-color: var(--lt-text-color);
+    --bg-color: var(--lt-bg-color);
+    --bg-color-secondary: var(--lt-bg-color-secondary);
+    --dialog-bg-color: var(--lt-dialog-bg-color);
+    --border-color: var(--lt-border-color);
+    color: rgb(var(--text-color));
+    background: rgb(var(--bg-color));
+    transition: background-color 500ms ease, color 300ms ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .campusdrop-shell {
+      --text-color: var(--dt-text-color);
+      --bg-color: var(--dt-bg-color);
+      --bg-color-secondary: var(--dt-bg-color-secondary);
+      --dialog-bg-color: var(--dt-dialog-bg-color);
+      --border-color: var(--dt-border-color);
+    }
+  }
+
+  .campusdrop-shell.light-theme {
+    --text-color: var(--lt-text-color);
+    --bg-color: var(--lt-bg-color);
+    --bg-color-secondary: var(--lt-bg-color-secondary);
+    --dialog-bg-color: var(--lt-dialog-bg-color);
+    --border-color: var(--lt-border-color);
+  }
+
+  .campusdrop-shell.dark-theme {
+    --text-color: var(--dt-text-color);
+    --bg-color: var(--dt-bg-color);
+    --bg-color-secondary: var(--dt-bg-color-secondary);
+    --dialog-bg-color: var(--dt-dialog-bg-color);
+    --border-color: var(--dt-border-color);
+  }
+
+  .icon-hover-target::before,
+  .button-hover-target::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: var(--accent-color);
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .icon-hover-target::before {
+    z-index: -1;
+    border-radius: 9999px;
+  }
+
+  .icon-hover-target:hover::before,
+  .icon-hover-target:focus-visible::before,
+  .icon-hover-target.selected::before,
+  .button-hover-target:not(:disabled):hover::before,
+  .button-hover-target:focus-visible::before {
+    opacity: 0.3;
+  }
+
+  .theme-wrapper:not(:hover) .icon-button:not(.selected) {
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .theme-wrapper:hover::before {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 120px;
+    margin-block: 8px;
+    content: "";
+    border-radius: 20px;
+    background: var(--primary-color);
+    opacity: 0.2;
+  }
+
+  .campusdrop-logo-gradient stop:first-child {
+    stop-color: color-mix(in srgb, var(--primary-color) 80%, white);
+  }
+
+  .campusdrop-logo-gradient stop:last-child {
+    stop-color: var(--primary-color);
+  }
+
+  .qr-box {
+    width: 116px;
+    height: 116px;
+    border: 8px solid var(--primary-color);
+    background:
+      linear-gradient(90deg, var(--primary-color) 14px, transparent 14px 34px, var(--primary-color) 34px 48px, transparent 48px),
+      linear-gradient(var(--primary-color) 14px, transparent 14px 34px, var(--primary-color) 34px 48px, transparent 48px);
+    background-size: 48px 48px;
+    opacity: 0.88;
+  }
+
+  .qr-box.amber {
+    border-color: var(--public-room-color);
+    background:
+      linear-gradient(90deg, var(--public-room-color) 14px, transparent 14px 34px, var(--public-room-color) 34px 48px, transparent 48px),
+      linear-gradient(var(--public-room-color) 14px, transparent 14px 34px, var(--public-room-color) 34px 48px, transparent 48px);
+    background-size: 48px 48px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
