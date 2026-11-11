@@ -3,8 +3,9 @@
 **Last Updated**: 2026-11-11  
 **Project Phase**: Phase Fourteen (1:1 PairDrop UI/UX Clone & Full WebRTC Engine with Campus Drop Identity)  
 **Active Git Branch**: `develop`  
-**Latest Commit**: `a8d681b` (on `main` and `develop`, pushed to `origin`)  
+**Latest Commit**: `850fd75` (on `main` and `develop`, pushed to `origin`)  
 **Remote Repository**: `https://github.com/amanydv1106/CampusDrop.git`  
+**Live Frontend (Vercel)**: `https://campus-drop-two.vercel.app`  
 **Live Production App (Render)**: `https://campus-drop-signaling.onrender.com`  
 **Live WebSocket Signaling**: `wss://campus-drop-signaling.onrender.com/server`  
 **Signaling Health Check**: `https://campus-drop-signaling.onrender.com/health`  
