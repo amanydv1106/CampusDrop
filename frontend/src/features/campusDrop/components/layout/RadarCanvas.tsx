@@ -93,7 +93,7 @@ export function RadarCanvas({ theme, isDiscovering = true }: RadarCanvasProps) {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 z-0 h-screen w-screen"
+      className="pointer-events-none absolute inset-0 z-0 h-full w-full"
       aria-hidden="true"
     />
   );

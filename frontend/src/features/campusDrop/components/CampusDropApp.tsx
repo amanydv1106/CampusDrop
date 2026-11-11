@@ -438,7 +438,7 @@ export function CampusDropApp() {
   return (
     <main
       className={cn(
-        "campusdrop-shell relative flex min-h-dvh w-screen flex-col overflow-hidden",
+        "campusdrop-shell relative flex h-screen w-full flex-col justify-between overflow-hidden",
         themeClassName
       )}
     >

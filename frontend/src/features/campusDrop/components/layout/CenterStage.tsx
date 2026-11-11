@@ -73,12 +73,17 @@ export function CenterStage({
       )}
 
       {peers.length === 0 ? (
-        <div className="flex h-34.25 max-w-[min(680px,calc(100vw-32px))] flex-1 animate-[fade-in_600ms_both] flex-col items-center justify-center p-2 text-center my-auto">
-          <h2 className="m-0 mb-1.25 text-[22px] font-normal leading-8 tracking-normal text-(--primary-color) max-[560px]:text-xl max-[560px]:leading-7">
+        <div className="flex flex-col items-center justify-center p-6 text-center mx-auto my-auto max-w-lg z-10 animate-[fade-in_600ms_both]">
+          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-(--primary-color)/10 text-(--primary-color)">
+            <svg viewBox="0 0 24 24" className="h-8 w-8 fill-current" aria-hidden="true">
+              <path d="M12 18.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm-6.4-6.4 1.7 1.7a6.7 6.7 0 0 1 9.4 0l1.7-1.7a9.1 9.1 0 0 0-12.8 0zM2 8.2l1.7 1.7a11.8 11.8 0 0 1 16.6 0L22 8.2a14.2 14.2 0 0 0-20 0z" />
+            </svg>
+          </div>
+          <h2 className="m-0 mb-2 text-2xl font-bold tracking-tight text-(--primary-color) max-[560px]:text-xl">
             Open Campus Drop on other devices to send files
           </h2>
-          <p className="m-0 opacity-80 text-sm">
-            Pair devices or enter a public room to be discoverable on other networks
+          <p className="m-0 text-sm opacity-80 max-w-md leading-relaxed">
+            Pair devices or enter a public room to be discoverable across campus networks
           </p>
         </div>
       ) : (
