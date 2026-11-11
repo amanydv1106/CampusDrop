@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'Static assets ready'",
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
     "test": "echo 'Frontend static verification ok'"
+  },
+  "dependencies": {
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "typescript": "7.0.2"
   }
 }

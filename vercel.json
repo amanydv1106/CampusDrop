@@ -1,6 +1,5 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/config", "destination": "/frontend/config.json" }
-  ]
+  "buildCommand": "npm --prefix frontend run build",
+  "outputDirectory": "frontend/.next",
+  "framework": "nextjs"
 }
