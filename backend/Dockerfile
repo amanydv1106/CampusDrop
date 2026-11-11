@@ -5,13 +5,14 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 
-COPY src/ ./src/
+COPY server/ ./server/
+COPY public/ ./public/
 
-ENV PORT=3001
+ENV PORT=3000
 ENV NODE_ENV=production
 
-EXPOSE 3001
+EXPOSE 3000
 
 USER node
 
-CMD ["node", "src/server.js"]
+CMD ["node", "server/index.js"]
