@@ -17,3 +17,8 @@
    - Frontend unit tests: 3/3 passing.
    - Monorepo `npm test` passing with 100% success.
    - Production build compiles cleanly with zero TypeScript errors.
+4. **Cloud Production Deployment**:
+   - Frontend deployed live to Vercel: `https://campus-drop-two.vercel.app`.
+   - Backend WebSocket signaling deployed live to Render: `wss://campus-drop-signaling.onrender.com`.
+   - Health endpoint returning 200 OK: `https://campus-drop-signaling.onrender.com/health`.
+   - Seamless communication between Vercel and Render verified with real peer handshakes.
