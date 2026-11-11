@@ -7,7 +7,7 @@ type AboutDialogProps = {
 
 export function AboutDialog({ onClose }: AboutDialogProps) {
   return (
-    <DialogShell title="About CampusDrop" onClose={onClose}>
+    <DialogShell title="About Campus Drop" onClose={onClose}>
       <div className="flex flex-col items-center p-4 text-center">
         <svg
           viewBox="0 0 24 24"
@@ -16,7 +16,7 @@ export function AboutDialog({ onClose }: AboutDialogProps) {
         >
           <path d={iconPaths.wifi} />
         </svg>
-        <h3 className="text-lg font-bold mb-1">CampusDrop</h3>
+        <h3 className="text-lg font-bold mb-1">Campus Drop</h3>
         <p className="m-0 max-w-88 text-sm leading-5 opacity-80">
           Fast, secure, peer-to-peer cross-device file and text transfer. Direct WebRTC connections,
           end-to-end encrypted, with zero server storage.

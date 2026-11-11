@@ -75,7 +75,7 @@ export function CenterStage({
       {peers.length === 0 ? (
         <div className="flex h-34.25 max-w-[min(680px,calc(100vw-32px))] flex-1 animate-[fade-in_600ms_both] flex-col items-center justify-center p-2 text-center my-auto">
           <h2 className="m-0 mb-1.25 text-[22px] font-normal leading-8 tracking-normal text-(--primary-color) max-[560px]:text-xl max-[560px]:leading-7">
-            Open CampusDrop on other devices to send files
+            Open Campus Drop on other devices to send files
           </h2>
           <p className="m-0 opacity-80 text-sm">
             Pair devices or enter a public room to be discoverable on other networks

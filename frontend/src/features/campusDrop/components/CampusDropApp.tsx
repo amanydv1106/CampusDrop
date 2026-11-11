@@ -97,10 +97,13 @@ export function CampusDropApp() {
 
     // Auto-join room from URL search parameters (?room=XYZ) or hash (#XYZ)
     const searchParams = new URLSearchParams(window.location.search);
-    const queryRoom = searchParams.get("room") || window.location.hash.replace(/^#/, "").trim();
+    const hash = window.location.hash.replace(/^#/, "").trim();
+    const queryRoom = searchParams.get("room") || hash;
     if (queryRoom && queryRoom.length === 5) {
       setRoomId(queryRoom.toUpperCase());
       setIsCurrentlyInRoom(true);
+    } else if (hash && /^\d{6}$/.test(hash)) {
+      sessionStorage.setItem("campusdrop_auto_pair_key", hash);
     }
   }, []);
 
@@ -223,6 +226,17 @@ export function CampusDropApp() {
         pairedSecrets,
         roomId: isCurrentlyInRoom ? roomId : null
       });
+
+      // If URL hash was a 6-digit pair key, auto-submit pairing request
+      const autoPairKey = typeof window !== "undefined" ? sessionStorage.getItem("campusdrop_auto_pair_key") : null;
+      if (autoPairKey) {
+        sessionStorage.removeItem("campusdrop_auto_pair_key");
+        setIsPairing(true);
+        signaling.send({
+          type: "submit-pair-key",
+          pairKey: autoPairKey
+        });
+      }
     });
 
     signaling.on("welcome", (msg: { self: any; peers: Peer[] }) => {

@@ -11,7 +11,7 @@ type AppHeaderProps = {
 export function AppHeader({ theme, onThemeChange, onDialogChange }: AppHeaderProps) {
   return (
     <header className="relative z-20 flex min-h-14 w-screen flex-row-reverse items-start px-3 py-2 max-[560px]:px-2 *:mx-1">
-      <IconButton label="About CampusDrop" icon="info" onClick={() => onDialogChange("about")} />
+      <IconButton label="About Campus Drop" icon="info" onClick={() => onDialogChange("about")} />
       <IconButton label="Set Language" icon="language" onClick={() => onDialogChange("language")} />
       <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
       <IconButton

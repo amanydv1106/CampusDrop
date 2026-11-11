@@ -34,3 +34,8 @@ Desktop.ini
 
 # Local workspace folder
 New folder/
+
+# Reports and generated documents (Do not push to git)
+*.docx
+*.pdf
+

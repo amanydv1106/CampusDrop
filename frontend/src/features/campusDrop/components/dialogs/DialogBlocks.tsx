@@ -43,6 +43,14 @@ export function KeySection({ code, description, qrTone = "primary" }: KeySection
       <h1 className="mb-1 mt-1.5 text-[34px] font-mono font-normal leading-10 tracking-normal">
         {code}
       </h1>
+      <button
+        type="button"
+        onClick={handleCopy}
+        className="mb-2 mt-1 inline-flex items-center gap-1.5 rounded-full border border-(--border-color)/40 bg-[rgb(var(--bg-color-secondary))] px-3 py-1 text-xs font-medium hover:border-(--primary-color) transition-colors cursor-pointer"
+        title="Copy invitation link"
+      >
+        <span>{copied ? "✓ Copied to clipboard" : "📋 Copy Link"}</span>
+      </button>
       <p className="m-0 max-w-80 text-sm leading-4.5">{description}</p>
     </div>
   );
