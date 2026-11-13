@@ -1,4 +1,4 @@
-const cacheVersion = 'v2.2.1';
+const cacheVersion = 'v2.2.2';
 const cacheTitle = `peerflow-cache-${cacheVersion}`;
 const relativePathsToCache = [
     './',

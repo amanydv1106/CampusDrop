@@ -750,7 +750,7 @@ class Dialog {
             document.activeElement.blur();
             window.blur();
         }
-        document.title = 'Peer Flow | Transfer Files Cross-Platform. No Setup, No Signup.';
+        document.title = 'Peer Flow - A Secure Peer-to-Peer File Sharing Platform';
         changeFavicon("images/favicon-96x96.png");
         this.correspondingPeerId = undefined;
     }

@@ -17,7 +17,7 @@
 1. **Brand Name Transition to Peer Flow**:
    - Rebranded the platform name across the entire application to **Peer Flow** per user directive.
    - Header brand title updated to `PeerFlow` (`Peer<span class="brand-highlight">Flow</span>`).
-   - Browser tab document titles updated to `Peer Flow | Transfer Files Cross-Platform Free & Fast` and dynamically across all file transfer states.
+   - Browser tab document titles updated to `Peer Flow - A Secure Peer-to-Peer File Sharing Platform` and dynamically across all file transfer states.
 2. **New Wireless Wave Brand Logo & Tab Favicon**:
    - Replaced top-left brand icon with a sleek wireless peer broadcast wave icon (`(( • ))`) with central node and concentric arcs.
    - Generated high-res SVG and PNG favicons (`favicon.svg`, `favicon-96x96.png`, `apple-touch-icon.png`, PWA icons) with blue gradient squircle and crisp white broadcast waves matching the user reference photo.
@@ -27,7 +27,7 @@
 4. **WebSocket URL Normalization & PWA Fresh Delivery**:
    - Sanitized `wsServerDomain` in `network.js` to strip trailing slashes and ensure exactly one `/server` path in all environments.
    - Standardized `signalingServer` in `config.json`, `/config`, and `route.js` to `"campus-drop-signaling.onrender.com"`.
-   - Upgraded Service Worker cache version to `v2.2.1` (`peerflow-cache-v2.2.1`) across frontend and backend.
+   - Upgraded Service Worker cache version to `v2.2.2` (`peerflow-cache-v2.2.2`) across frontend and backend.
 5. **Multi-Cloud Deployments**:
    - Frontend Next.js deployment hosted on Vercel at `https://campus-drop-two.vercel.app`.
    - Backend WebSocket signaling server hosted on Render at `https://campus-drop-signaling.onrender.com`.
