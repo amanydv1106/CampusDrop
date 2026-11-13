@@ -18,7 +18,7 @@
     "instructions": {
         "no-peers_data-drop-bg": "Release to select recipient",
         "no-peers-title": "Open Campus Drop on other devices to send files",
-        "no-peers-subtitle": "Pair devices or enter a public room to be discoverable on other networks",
+        "no-peers-subtitle": "Enter a public room to be discoverable on other networks",
         "x-instructions_desktop": "Click to send files or right click to send a message",
         "x-instructions_mobile": "Tap to send files or long tap to send a message",
         "x-instructions_data-drop-peer": "Release to send to peer",

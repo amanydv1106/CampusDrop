@@ -51,18 +51,14 @@ function createCanvas(data) {
 function initCanvas(footerOffsetHeight, clientWidth, clientHeight) {
     let oldW = w;
     let oldH = h;
-    let oldOffset = offset;
     w = clientWidth;
     h = clientHeight;
-    offset = footerOffsetHeight - 28;
-
-    if (oldW === w && oldH === h && oldOffset === offset) return; // nothing has changed
 
     c.width = w;
     c.height = h;
     x0 = w / 2;
-    y0 = h - offset;
-    dw = Math.round(Math.min(Math.max(0.6 * w, h)) / 10);
+    y0 = h / 2;
+    dw = Math.round(Math.min(w, h) / 7);
 
     drawFrame(currentFrame);
 }
@@ -74,7 +70,6 @@ function startAnimation() {
 
 function switchAnimation(state) {
     if (!animate && state) {
-        // animation starts again. Set startTime to specific value to prevent frame jump
         startTime = Date.now() - 1000 * currentFrame / fps;
     }
     animate = state;
@@ -88,30 +83,20 @@ function onShareModeChange(active) {
 }
 
 function drawCircle(ctx, radius) {
-    ctx.lineWidth = 2;
-
-    let opacity = Math.max(0, baseOpacity * (1 - 1.2 * radius / Math.max(w, h)));
-    if (radius > dw * 7) {
-        opacity *= (8 * dw - radius) / dw
-    }
-
-    if (ctx.setStrokeColor) {
-        // older blink/webkit based browsers do not understand opacity in strokeStyle. Use deprecated setStrokeColor instead
-        // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle#webkitblink-specific_note
-        ctx.setStrokeColor("grey", opacity);
-    }
-    else {
-        ctx.strokeStyle = `rgb(${baseColor} / ${opacity})`;
-    }
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 8]);
+    let opacity = Math.max(0, baseOpacity * (1 - 0.9 * radius / Math.max(w, h)));
+    ctx.strokeStyle = `rgba(${baseColor.split(' ').join(', ')}, ${opacity})`;
     ctx.beginPath();
     ctx.arc(x0, y0, radius, 0, 2 * Math.PI);
     ctx.stroke();
+    ctx.setLineDash([]);
 }
 
 function drawCircles(ctx, frame) {
     ctx.clearRect(0, 0, w, h);
-    for (let i = 7; i >= 0; i--) {
-        drawCircle(ctx, dw * i + speed * dw * frame / fps + 33);
+    for (let i = 6; i >= 1; i--) {
+        drawCircle(ctx, dw * i + speed * dw * frame / fps);
     }
 }
 

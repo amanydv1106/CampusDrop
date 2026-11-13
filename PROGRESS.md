@@ -32,3 +32,4 @@ Status Definitions:
 | **FEAT-014** | Desktop & Mobile Responsive UI | VERIFIED | PRODUCTION READY | VERIFIED | 360px - 1440px responsive dialogs and controls |
 | **FEAT-015** | Background Desktop Notifications | VERIFIED | PRODUCTION READY | VERIFIED | Alerts on incoming files and completed transfers |
 | **FEAT-016** | Docker & Deployment Assets | VERIFIED | PRODUCTION READY | VERIFIED | Full Docker Compose & Nginx configuration |
+| **FEAT-017** | Modern Custom UI & Streamlined Features | N/A | PRODUCTION READY | VERIFIED | Completely original modern UI; removed language selector and permanent pairing per user request |

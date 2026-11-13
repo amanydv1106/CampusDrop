@@ -19,4 +19,9 @@
 ## ADR-004: Client-Side Persistent Pairing
 - **Context**: Users need to transfer files across different networks without re-entering pairing codes each time.
 - **Decision**: Store 32-character pairing secrets in browser `localStorage`/`IndexedDB`. Devices announce their known secrets on connection; the signaling server matches overlapping secrets to establish visibility.
+- **Status**: Superseded by ADR-005 (simplified to Public Rooms).
+
+## ADR-005: Custom Modern UI Redesign & Streamlined Feature Set
+- **Context**: The user requested an original homepage appearance to eliminate visual resemblance to reference applications, and requested the removal of language selection and permanent pairing options to streamline the UX.
+- **Decision**: Redesign the frontend with a modern cyber-indigo/neon-cyan aesthetic, centered dashed orbital radar canvas, branded top navigation bar with live P2P status badge, beacon empty state card with quick room join CTA, floating dock footer, and squircle peer cards. Remove language selector button and dialog (defaulting cleanly to English) and remove permanent 6-digit pairing dialogs while retaining temporary public rooms and automatic subnet LAN discovery.
 - **Status**: Accepted.

@@ -125,38 +125,8 @@ class HeaderUI {
     }
 
     async evaluateOverflowing() {
-        // remove bracket icon before evaluating
-        this.$expandBtn.setAttribute('hidden', true);
-        // reset bracket icon rotation and header overflow
-        this.$expandBtn.classList.add('flipped');
-        this.$header.classList.remove('overflow-expanded');
-
-
-        const rtlLocale = Localization.currentLocaleIsRtl();
-        let icon;
-        const $headerIconsShown = document.querySelectorAll('body > header:first-of-type > *:not([hidden])');
-
-        for (let i= 1; i < $headerIconsShown.length; i++) {
-            let isFurtherLeftThanLastIcon = $headerIconsShown[i].offsetLeft >= $headerIconsShown[i-1].offsetLeft;
-            let isFurtherRightThanLastIcon = $headerIconsShown[i].offsetLeft <= $headerIconsShown[i-1].offsetLeft;
-            if ((!rtlLocale && isFurtherLeftThanLastIcon) || (rtlLocale && isFurtherRightThanLastIcon)) {
-                // we have found the first icon on second row. Use previous icon.
-                icon = $headerIconsShown[i-1];
-                break;
-            }
-        }
-        if (icon) {
-            // overflowing
-            // add overflowing-hidden class
-            this.$header.classList.add('overflow-hidden');
-            // add expand btn 2 before icon
-            this.$expandBtn.removeAttribute('hidden');
-            icon.before(this.$expandBtn);
-        }
-        else {
-            // no overflowing
-            // remove overflowing-hidden class
-            this.$header.classList.remove('overflow-hidden');
+        if (this.$expandBtn) {
+            this.$expandBtn.setAttribute('hidden', true);
         }
     }
 
@@ -218,14 +188,7 @@ class FooterUI {
     }
 
     async _evaluateFooterBadges() {
-        if (this.$discoveryWrapper.querySelectorAll('div:last-of-type > span[hidden]').length < 2) {
-            this.$discoveryWrapper.classList.remove('row');
-            this.$discoveryWrapper.classList.add('column');
-        }
-        else {
-            this.$discoveryWrapper.classList.remove('column');
-            this.$discoveryWrapper.classList.add('row');
-        }
+        if (!this.$discoveryWrapper) return;
         Events.fire('redraw-canvas');
     }
 
@@ -344,11 +307,11 @@ class BackgroundCanvas {
     }
 
     initAnimation() {
-        this.baseColorNormal = '168 168 168';
-        this.baseColorShareMode = '168 168 255';
-        this.baseOpacityNormal = 0.3;
-        this.baseOpacityShareMode = 0.8;
-        this.speed = 0.5;
+        this.baseColorNormal = '99 102 241';
+        this.baseColorShareMode = '6 182 212';
+        this.baseOpacityNormal = 0.35;
+        this.baseOpacityShareMode = 0.75;
+        this.speed = 0.4;
         this.fps = 60;
 
         // if browser supports OffscreenCanvas
@@ -416,18 +379,14 @@ class BackgroundCanvas {
         function initCanvas(footerOffsetHeight, clientWidth, clientHeight) {
             let oldW = w;
             let oldH = h;
-            let oldOffset = offset;
             w = clientWidth;
             h = clientHeight;
-            offset = footerOffsetHeight - 28;
-
-            if (oldW === w && oldH === h && oldOffset === offset) return; // nothing has changed
 
             c.width = w;
             c.height = h;
             x0 = w / 2;
-            y0 = h - offset;
-            dw = Math.round(Math.min(Math.max(0.6 * w, h)) / 10);
+            y0 = h / 2;
+            dw = Math.round(Math.min(w, h) / 7);
 
             drawFrame(currentFrame);
         }
@@ -439,7 +398,6 @@ class BackgroundCanvas {
 
         function switchAnimation(state) {
             if (!animate && state) {
-                // animation starts again. Set startTime to specific value to prevent frame jump
                 startTime = Date.now() - 1000 * currentFrame / fps;
             }
             animate = state;
@@ -453,30 +411,20 @@ class BackgroundCanvas {
         }
 
         function drawCircle(ctx, radius) {
-            ctx.lineWidth = 2;
-
-            let opacity = Math.max(0, baseOpacity * (1 - 1.2 * radius / Math.max(w, h)));
-            if (radius > dw * 7) {
-                opacity *= (8 * dw - radius) / dw
-            }
-
-            if (ctx.setStrokeColor) {
-                // older blink/webkit browsers do not understand opacity in strokeStyle. Use deprecated setStrokeColor
-                // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle#webkitblink-specific_note
-                ctx.setStrokeColor("grey", opacity);
-            }
-            else {
-                ctx.strokeStyle = `rgb(${baseColor} / ${opacity})`;
-            }
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 8]);
+            let opacity = Math.max(0, baseOpacity * (1 - 0.9 * radius / Math.max(w, h)));
+            ctx.strokeStyle = `rgba(${baseColor.split(' ').join(', ')}, ${opacity})`;
             ctx.beginPath();
             ctx.arc(x0, y0, radius, 0, 2 * Math.PI);
             ctx.stroke();
+            ctx.setLineDash([]);
         }
 
         function drawCircles(ctx, frame) {
             ctx.clearRect(0, 0, w, h);
-            for (let i = 7; i >= 0; i--) {
-                drawCircle(ctx, dw * i + speed * dw * frame / fps + 33);
+            for (let i = 6; i >= 1; i--) {
+                drawCircle(ctx, dw * i + speed * dw * frame / fps);
             }
         }
 

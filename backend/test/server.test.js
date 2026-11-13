@@ -8,7 +8,14 @@ test("Campus Drop Server starts up, handles /health, and accepts WebSockets", as
     stdio: "pipe"
   });
 
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  await new Promise((resolve) => {
+    proc.stdout.on("data", (data) => {
+      if (data.toString().includes("running on port")) {
+        resolve();
+      }
+    });
+    setTimeout(resolve, 3000);
+  });
 
   try {
     const res = await fetch("http://localhost:3099/health");

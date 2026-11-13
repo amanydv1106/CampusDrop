@@ -94,14 +94,8 @@
 
     async evaluatePermissionsAndRoomSecrets() {
         // Check whether notification permissions have already been granted
-        if ('Notification' in window && Notification.permission !== 'granted') {
+        if ('Notification' in window && Notification.permission !== 'granted' && this.$headerNotificationBtn) {
             this.$headerNotificationBtn.removeAttribute('hidden');
-        }
-
-        let roomSecrets = await PersistentStorage.getAllRoomSecrets();
-        if (roomSecrets.length > 0) {
-            this.$headerEditPairedDevicesBtn.removeAttribute('hidden');
-            this.$footerPairedDevicesBadge.removeAttribute('hidden');
         }
     }
 
@@ -194,11 +188,7 @@
         const hash = window.location.hash.substring(1);
 
         // evaluate url params
-        if (urlParams.has('pair_key')) {
-            const pairKey = urlParams.get('pair_key');
-            this.pairDeviceDialog._pairDeviceJoin(pairKey);
-        }
-        else if (urlParams.has('room_id')) {
+        if (urlParams.has('room_id')) {
             const roomId = urlParams.get('room_id');
             this.publicRoomDialog._joinPublicRoom(roomId);
         }
@@ -222,10 +212,7 @@
         }
         else if (urlParams.has("init")) {
             const init = urlParams.get("init");
-            if (init === "pair") {
-                this.pairDeviceDialog._pairDeviceInitiate();
-            }
-            else if (init === "public_room") {
+            if (init === "public_room") {
                 this.publicRoomDialog._createPublicRoom();
             }
         }

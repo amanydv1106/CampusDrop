@@ -710,6 +710,7 @@ class PeerUI {
 class Dialog {
     constructor(id) {
         this.$el = $(id);
+        if (!this.$el) return;
         this.$autoFocus = this.$el.querySelector('[autofocus]');
         this.$xBackground = this.$el.querySelector('x-background');
         this.$closeBtns = this.$el.querySelectorAll('[close]');
@@ -726,6 +727,7 @@ class Dialog {
     }
 
     show() {
+        if (!this.$el) return;
         if (this.$xBackground) {
             this.$xBackground.scrollTop = 0;
         }
@@ -738,10 +740,11 @@ class Dialog {
     }
 
     isShown() {
-        return !!this.$el.attributes["show"];
+        return this.$el ? !!this.$el.attributes["show"] : false;
     }
 
     hide() {
+        if (!this.$el) return;
         this.$el.removeAttribute('show');
         if (!window.isMobile) {
             document.activeElement.blur();
@@ -760,6 +763,7 @@ class Dialog {
     }
 
     _evaluateOverflowing(element) {
+        if (!element) return;
         if (element.clientHeight < element.scrollHeight) {
             element.classList.add('overflowing');
         }
@@ -775,12 +779,18 @@ class LanguageSelectDialog extends Dialog {
         super('language-select-dialog');
 
         this.$languageSelectBtn = $('language-selector');
-        this.$languageSelectBtn.addEventListener('click', _ => this.show());
+        if (this.$languageSelectBtn) {
+            this.$languageSelectBtn.addEventListener('click', _ => this.show());
+        }
 
-        this.$languageButtons = this.$el.querySelectorAll(".language-buttons .btn");
-        this.$languageButtons.forEach($btn => {
-            $btn.addEventListener("click", e => this.selectLanguage(e));
-        })
+        if (this.$el) {
+            this.$languageButtons = this.$el.querySelectorAll(".language-buttons .btn");
+            if (this.$languageButtons) {
+                this.$languageButtons.forEach($btn => {
+                    $btn.addEventListener("click", e => this.selectLanguage(e));
+                });
+            }
+        }
         Events.on('keydown', e => this._onKeyDown(e));
     }
 
@@ -793,18 +803,19 @@ class LanguageSelectDialog extends Dialog {
     }
 
     show() {
+        if (!this.$el || !this.$languageButtons) return;
         let locale = Localization.getLocale();
         this.currentLanguageBtn = Localization.isSystemLocale()
             ? this.$languageButtons[0]
             : this.$el.querySelector(`.btn[value="${locale}"]`);
 
-        this.currentLanguageBtn.classList.add("current");
+        if (this.currentLanguageBtn) this.currentLanguageBtn.classList.add("current");
 
         super.show();
     }
 
     hide() {
-        this.currentLanguageBtn.classList.remove("current");
+        if (this.currentLanguageBtn) this.currentLanguageBtn.classList.remove("current");
 
         super.hide();
     }
@@ -1308,6 +1319,9 @@ class PairDeviceDialog extends Dialog {
         this.$pairDeviceHeaderBtn = $('pair-device');
         this.$editPairedDevicesHeaderBtn = $('edit-paired-devices');
         this.$footerInstructionsPairedDevices = $$('.discovery-wrapper .badge-room-secret');
+        this.pairPeer = {};
+
+        if (!this.$el) return;
 
         this.$key = this.$el.querySelector('.key');
         this.$qrCode = this.$el.querySelector('.key-qr-code');
@@ -1318,14 +1332,14 @@ class PairDeviceDialog extends Dialog {
         this.inputKeyContainer = new InputKeyContainer(
             this.$el.querySelector('.input-key-container'),
             /\d/,
-            () => this.$pairSubmitBtn.removeAttribute('disabled'),
-            () => this.$pairSubmitBtn.setAttribute('disabled', true),
+            () => this.$pairSubmitBtn && this.$pairSubmitBtn.removeAttribute('disabled'),
+            () => this.$pairSubmitBtn && this.$pairSubmitBtn.setAttribute('disabled', true),
             () => this._submit()
         );
 
-        this.$pairDeviceHeaderBtn.addEventListener('click', _ => this._pairDeviceInitiate());
-        this.$form.addEventListener('submit', e => this._onSubmit(e));
-        this.$closeBtn.addEventListener('click', _ => this._close());
+        if (this.$pairDeviceHeaderBtn) this.$pairDeviceHeaderBtn.addEventListener('click', _ => this._pairDeviceInitiate());
+        if (this.$form) this.$form.addEventListener('submit', e => this._onSubmit(e));
+        if (this.$closeBtn) this.$closeBtn.addEventListener('click', _ => this._close());
 
         Events.on('keydown', e => this._onKeyDown(e));
         Events.on('ws-disconnected', _ => this.hide());
@@ -1338,9 +1352,7 @@ class PairDeviceDialog extends Dialog {
         Events.on('evaluate-number-room-secrets', _ => this._evaluateNumberRoomSecrets())
         Events.on('secret-room-deleted', e => this._onSecretRoomDeleted(e.detail));
         this.$el.addEventListener('paste', e => this._onPaste(e));
-        this.$qrCode.addEventListener('click', _ => this._copyPairUrl());
-
-        this.pairPeer = {};
+        if (this.$qrCode) this.$qrCode.addEventListener('click', _ => this._copyPairUrl());
     }
 
     _onKeyDown(e) {
@@ -1545,11 +1557,13 @@ class PairDeviceDialog extends Dialog {
 class EditPairedDevicesDialog extends Dialog {
     constructor() {
         super('edit-paired-devices-dialog');
+        if (!this.$el) return;
         this.$pairedDevicesWrapper = this.$el.querySelector('.paired-devices-wrapper');
         this.$footerBadgePairedDevices = $$('.discovery-wrapper .badge-room-secret');
 
-        $('edit-paired-devices').addEventListener('click', _ => this._onEditPairedDevices());
-        this.$footerBadgePairedDevices.addEventListener('click', _ => this._onEditPairedDevices());
+        let $editBtn = $('edit-paired-devices');
+        if ($editBtn) $editBtn.addEventListener('click', _ => this._onEditPairedDevices());
+        if (this.$footerBadgePairedDevices) this.$footerBadgePairedDevices.addEventListener('click', _ => this._onEditPairedDevices());
 
         Events.on('peer-display-name-changed', e => this._onPeerDisplayNameChanged(e));
         Events.on('keydown', e => this._onKeyDown(e));
@@ -1630,9 +1644,11 @@ class EditPairedDevicesDialog extends Dialog {
 
     hide() {
         super.hide();
-        setTimeout(() => {
-            this.$pairedDevicesWrapper.innerHTML = ""
-        }, 300);
+        if (this.$pairedDevicesWrapper) {
+            setTimeout(() => {
+                this.$pairedDevicesWrapper.innerHTML = ""
+            }, 300);
+        }
     }
 
     _onEditPairedDevices() {
