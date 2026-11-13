@@ -36,3 +36,8 @@
    - Standardized `signalingServer` across frontend route, config, and backend config.
    - Bumped service worker cache to `v2.2.1`.
    - Verified all 12 assets on Vercel return HTTP 200, Render deploy status is live, and two clients discover each other via WebSockets.
+8. **Global Production Domain Binding & Vercel Rebranding**:
+   - Rebranded Vercel project name to `peerflow`.
+   - Added and verified domain aliases: `peer-flow-app.vercel.app`, `peer-flow-share.vercel.app`, `peer-flow-web.vercel.app`, `peerflow-p2p.vercel.app`, `peerflow-drop.vercel.app`.
+   - Assigned latest production deployment to all peer-flow aliases globally.
+   - Verified HTTP 200 status and brand title across all live URLs.

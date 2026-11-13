@@ -1,10 +1,11 @@
 # Peer Flow — Current Context
 
 **Last Updated**: 2026-11-13  
-**Project Phase**: Phase Eighteen (WebSocket URL Normalization & End-to-End Multi-Cloud Deployment)  
+**Project Phase**: Phase Nineteen (Global Production Domain Binding & Vercel Rebranding to Peer Flow)  
 **Active Git Branch**: `develop`  
 **Remote Repository**: `https://github.com/amanydv1106/CampusDrop.git`  
-**Live Frontend (Vercel)**: `https://campus-drop-two.vercel.app`  
+**Primary Live Frontend (Vercel)**: `https://peer-flow-app.vercel.app`  
+**Alternative Live Frontend (Vercel)**: `https://peer-flow-share.vercel.app`, `https://peerflow-p2p.vercel.app`, `https://campus-drop-two.vercel.app`  
 **Live Production App (Render)**: `https://campus-drop-signaling.onrender.com`  
 **Live WebSocket Signaling**: `wss://campus-drop-signaling.onrender.com/server`  
 **Signaling Health Check**: `https://campus-drop-signaling.onrender.com/health`  
