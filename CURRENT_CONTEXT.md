@@ -1,7 +1,7 @@
 # Peer Flow — Current Context
 
 **Last Updated**: 2026-11-13  
-**Project Phase**: Phase Seventeen (Rebranding to Peer Flow, Custom Wireless Wave Brand Icon & Tab Favicon)  
+**Project Phase**: Phase Eighteen (WebSocket URL Normalization & End-to-End Multi-Cloud Deployment)  
 **Active Git Branch**: `develop`  
 **Remote Repository**: `https://github.com/amanydv1106/CampusDrop.git`  
 **Live Frontend (Vercel)**: `https://campus-drop-two.vercel.app`  
@@ -23,8 +23,10 @@
 3. **Backend & Signaling Rebranding**:
    - Updated backend signaling server `/health` endpoint to report `service: "Peer Flow Signaling Server"`.
    - Updated startup server logs and automated integration tests to verify Peer Flow signaling.
-4. **PWA Cache Invalidation & Fresh Delivery**:
-   - Upgraded Service Worker cache version to `v2.2.0` (`peerflow-cache-v2.2.0`) and IndexedDB store to `peerflow_store` across frontend and backend.
+4. **WebSocket URL Normalization & PWA Fresh Delivery**:
+   - Sanitized `wsServerDomain` in `network.js` to strip trailing slashes and ensure exactly one `/server` path in all environments.
+   - Standardized `signalingServer` in `config.json`, `/config`, and `route.js` to `"campus-drop-signaling.onrender.com"`.
+   - Upgraded Service Worker cache version to `v2.2.1` (`peerflow-cache-v2.2.1`) across frontend and backend.
 5. **Multi-Cloud Deployments**:
    - Frontend Next.js deployment hosted on Vercel at `https://campus-drop-two.vercel.app`.
    - Backend WebSocket signaling server hosted on Render at `https://campus-drop-signaling.onrender.com`.

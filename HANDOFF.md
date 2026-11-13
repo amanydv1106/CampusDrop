@@ -31,3 +31,8 @@
    - Generated matching SVG and PNG favicons with blue gradient squircle and crisp white broadcast waves.
    - Updated backend signaling server `/health` endpoint to report `service: "Peer Flow Signaling Server"`.
    - Bumped PWA service worker cache to `v2.2.0` (`peerflow-cache-v2.2.0`) and IndexedDB store to `peerflow_store`.
+7. **WebSocket URL Normalization & Production Multi-Cloud Verification**:
+   - Normalized signaling URL logic in `network.js` to strip trailing slashes and cleanly format `/server`.
+   - Standardized `signalingServer` across frontend route, config, and backend config.
+   - Bumped service worker cache to `v2.2.1`.
+   - Verified all 12 assets on Vercel return HTTP 200, Render deploy status is live, and two clients discover each other via WebSockets.

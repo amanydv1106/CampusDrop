@@ -248,9 +248,13 @@ class ServerConnection {
         // Check whether the instance specifies another signaling server otherwise use the current instance for signaling
         let wsServerDomain = (this._config && this._config.signalingServer)
             ? this._config.signalingServer
-            : (location.hostname.includes('vercel.app') ? 'campus-drop-signaling.onrender.com/' : location.host + location.pathname);
+            : (location.hostname.includes('vercel.app') ? 'campus-drop-signaling.onrender.com' : (location.host + location.pathname));
 
-        let wsUrl = new URL(protocol + '://' + wsServerDomain + 'server');
+        if (wsServerDomain.endsWith('/')) {
+            wsServerDomain = wsServerDomain.slice(0, -1);
+        }
+
+        let wsUrl = new URL(protocol + '://' + wsServerDomain + '/server');
 
         wsUrl.searchParams.append('webrtc_supported', window.isRtcSupported ? 'true' : 'false');
 
