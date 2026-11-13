@@ -18,7 +18,9 @@
    - Next.js production build (`frontend/.next`) builds and prerenders cleanly.
    - Backend automated tests verifying `/health` and WebSocket handshakes passing 100%.
    - Full test suite passing with zero warnings or errors.
-4. **Cloud Production Deployments**:
-   - Frontend on Vercel: `https://campus-drop-two.vercel.app`.
-   - Backend on Render: `https://campus-drop-signaling.onrender.com`.
+4. **Cloud Production Deployments & Cache Invalidation**:
+   - PWA Service Worker bumped to `v2.0.0` (`campusdrop-cache-v2.0.0`) and IndexedDB store updated to `campusdrop_store` to auto-purge legacy browser caches.
+   - Next.js root route served with `Cache-Control: no-cache, no-store, must-revalidate` for immediate live updates.
+   - Frontend deployed and verified live on Vercel: `https://campus-drop-two.vercel.app` (HTTP 200).
+   - Backend deployed and verified live on Render: `https://campus-drop-signaling.onrender.com` (status: `live`).
    - WebSocket Signaling: `wss://campus-drop-signaling.onrender.com/server`.
