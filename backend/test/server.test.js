@@ -1,9 +1,14 @@
 import test from "node:test";
 import assert from "node:assert";
 import { spawn } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const backendDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
 test("Campus Drop Server starts up, handles /health, and accepts WebSockets", async () => {
   const proc = spawn("node", ["server/index.js"], {
+    cwd: backendDir,
     env: { ...process.env, PORT: "3099" },
     stdio: "pipe"
   });

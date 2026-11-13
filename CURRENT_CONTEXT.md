@@ -1,8 +1,8 @@
 # Campus Drop — Current Context
 
 **Last Updated**: 2026-11-13  
-**Project Phase**: Phase Fifteen (Custom Modern UI Redesign & Streamlined Feature Set)  
-**Active Git Branch**: `feature/campus-drop-new-ui`  
+**Project Phase**: Phase Fifteen (Custom Modern UI Redesign, Streamlined Features, & Cache Purge Delivery)  
+**Active Git Branch**: `develop`  
 **Remote Repository**: `https://github.com/amanydv1106/CampusDrop.git`  
 **Live Frontend (Vercel)**: `https://campus-drop-two.vercel.app`  
 **Live Production App (Render)**: `https://campus-drop-signaling.onrender.com`  
@@ -24,7 +24,10 @@
    - Removed language selection menu and dialog; defaults cleanly and reliably to English across all components.
    - Removed permanent 6-digit PIN pairing menu, dialogs, and badges per user specification.
    - Preserved temporary public rooms (5-character codes / QR) and automatic LAN subnet discovery for cross-network sharing.
-3. **Multi-Cloud Deployments**:
+3. **PWA Cache Invalidation & Fresh Delivery**:
+   - Upgraded Service Worker cache version to `v2.0.0` (`campusdrop-cache-v2.0.0`) and IndexedDB store to `campusdrop_store` across frontend and backend.
+   - Configured `Cache-Control: no-cache, no-store, must-revalidate` on Next.js root route to ensure immediate delivery of updated HTML/assets without browser or CDN stale caching.
+4. **Multi-Cloud Deployments**:
    - Frontend Next.js deployment hosted on Vercel at `https://campus-drop-two.vercel.app`.
    - Backend WebSocket signaling server hosted on Render at `https://campus-drop-signaling.onrender.com`.
    - Verified automated test suite (backend integration and frontend Next.js compilation) passing 100%.

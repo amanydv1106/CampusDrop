@@ -1,5 +1,5 @@
-const cacheVersion = 'v1.11.2';
-const cacheTitle = `pairdrop-cache-${cacheVersion}`;
+const cacheVersion = 'v2.0.0';
+const cacheTitle = `campusdrop-cache-${cacheVersion}`;
 const relativePathsToCache = [
     './',
     'index.html',
@@ -217,7 +217,7 @@ const evaluateRequestData = function (request) {
         const url = formData.get("url");
         const files = formData.getAll("allfiles");
 
-        const pairDropUrl = request.url;
+        const campusDropUrl = request.url;
 
         if (files && files.length > 0) {
             let fileObjects = [];
@@ -228,7 +228,7 @@ const evaluateRequestData = function (request) {
                 });
             }
 
-            const DBOpenRequest = indexedDB.open('pairdrop_store');
+            const DBOpenRequest = indexedDB.open('campusdrop_store');
             DBOpenRequest.onsuccess = e => {
                 const db = e.target.result;
                 for (let i = 0; i < fileObjects.length; i++) {
@@ -237,12 +237,12 @@ const evaluateRequestData = function (request) {
 
                     const objectStoreRequest = objectStore.add(fileObjects[i]);
                     objectStoreRequest.onsuccess = _ => {
-                        if (i === fileObjects.length - 1) resolve(pairDropUrl + '?share_target=files');
+                        if (i === fileObjects.length - 1) resolve(campusDropUrl + '?share_target=files');
                     }
                 }
             }
             DBOpenRequest.onerror = _ => {
-                resolve(pairDropUrl);
+                resolve(campusDropUrl);
             }
         }
         else {
@@ -252,7 +252,7 @@ const evaluateRequestData = function (request) {
             if (text) urlArgument += `&text=${text}`;
             if (url) urlArgument += `&url=${url}`;
 
-            resolve(pairDropUrl + urlArgument);
+            resolve(campusDropUrl + urlArgument);
         }
     });
 }
