@@ -1,4 +1,4 @@
-﻿class CampusDrop {
+﻿class PeerFlow {
 
     constructor() {
         this.$headerNotificationBtn = $('notification');
@@ -227,4 +227,5 @@
     }
 }
 
-const campusDrop = new CampusDrop();
+const peerFlow = new PeerFlow();
+const campusDrop = peerFlow;

@@ -47,7 +47,7 @@ export default class PairDropServer {
         app.get('/health', (req, res) => {
             res.json({
                 status: "ok",
-                service: "Campus Drop Signaling Server",
+                service: "Peer Flow Signaling Server",
                 version: "1.11.2"
             });
         });

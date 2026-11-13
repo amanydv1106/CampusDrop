@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="peerFlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#peerFlowGrad)"/>
+  <circle cx="32" cy="32" r="4.5" fill="#ffffff"/>
+  <g fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round">
+    <path d="M23.5 23.5a12 12 0 0 0 0 17M40.5 23.5a12 12 0 0 1 0 17"/>
+    <path d="M16.5 16.5a21.9 21.9 0 0 0 0 31M47.5 16.5a21.9 21.9 0 0 1 0 31"/>
+  </g>
+</svg>

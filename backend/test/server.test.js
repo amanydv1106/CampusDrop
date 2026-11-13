@@ -6,7 +6,7 @@ import path from "node:path";
 
 const backendDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
-test("Campus Drop Server starts up, handles /health, and accepts WebSockets", async () => {
+test("Peer Flow Server starts up, handles /health, and accepts WebSockets", async () => {
   const proc = spawn("node", ["server/index.js"], {
     cwd: backendDir,
     env: { ...process.env, PORT: "3099" },
@@ -27,7 +27,7 @@ test("Campus Drop Server starts up, handles /health, and accepts WebSockets", as
     assert.strictEqual(res.status, 200);
     const data = await res.json();
     assert.strictEqual(data.status, "ok");
-    assert.strictEqual(data.service, "Campus Drop Signaling Server");
+    assert.strictEqual(data.service, "Peer Flow Signaling Server");
 
     const ws = new globalThis.WebSocket("ws://localhost:3099/server?webrtc_supported=true");
     const received = await new Promise((resolve, reject) => {

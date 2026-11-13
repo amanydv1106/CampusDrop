@@ -1,13 +1,13 @@
 ﻿{
     "header": {
-        "about_title": "About Campus Drop",
+        "about_title": "About Peer Flow",
         "language-selector_title": "Set Language",
-        "about_aria-label": "Open About Campus Drop",
+        "about_aria-label": "Open About Peer Flow",
         "theme-auto_title": "Adapt theme to system automatically",
         "theme-light_title": "Always use light theme",
         "theme-dark_title": "Always use dark theme",
         "notification_title": "Enable notifications",
-        "install_title": "Install Campus Drop",
+        "install_title": "Install Peer Flow",
         "pair-device_title": "Pair your devices permanently",
         "edit-paired-devices_title": "Edit paired devices",
         "join-public-room_title": "Join public room temporarily",
@@ -17,7 +17,7 @@
     },
     "instructions": {
         "no-peers_data-drop-bg": "Release to select recipient",
-        "no-peers-title": "Open Campus Drop on other devices to send files",
+        "no-peers-title": "Open Peer Flow on other devices to send files",
         "no-peers-subtitle": "Enter a public room to be discoverable on other networks",
         "x-instructions_desktop": "Click to send files or right click to send a message",
         "x-instructions_mobile": "Tap to send files or long tap to send a message",
@@ -25,13 +25,13 @@
         "x-instructions_data-drop-bg": "Release to select recipient",
         "x-instructions-share-mode_desktop": "Click to send {{descriptor}}",
         "x-instructions-share-mode_mobile": "Tap to send {{descriptor}}",
-        "activate-share-mode-base": "Open Campus Drop on other devices to send",
+        "activate-share-mode-base": "Open Peer Flow on other devices to send",
         "activate-share-mode-and-other-file": "and 1 other file",
         "activate-share-mode-and-other-files-plural": "and {{count}} other files",
         "activate-share-mode-shared-text": "shared text",
         "activate-share-mode-shared-file": "shared file",
         "activate-share-mode-shared-files-plural": "{{count}} shared files",
-        "webrtc-requirement": "To use this Campus Drop instance, WebRTC must be enabled!"
+        "webrtc-requirement": "To use this Peer Flow instance, WebRTC must be enabled!"
     },
     "footer": {
         "known-as": "You are known as:",
@@ -110,12 +110,12 @@
         "close-toast_title": "Close notification"
     },
     "about": {
-        "close-about_aria-label": "Close About Campus Drop",
+        "close-about_aria-label": "Close About Peer Flow",
         "claim": "The easiest way to transfer files across devices",
-        "github_title": "Campus Drop on GitHub",
+        "github_title": "Peer Flow on GitHub",
         "buy-me-a-coffee_title": "Buy me a coffee!",
-        "tweet_title": "Tweet about Campus Drop",
-        "mastodon_title": "Write about Campus Drop on Mastodon",
+        "tweet_title": "Tweet about Peer Flow",
+        "mastodon_title": "Write about Peer Flow on Mastodon",
         "bluesky_title": "Follow us on BlueSky",
         "custom_title": "Follow us",
         "privacypolicy_title": "Open our privacy policy",
@@ -160,7 +160,7 @@
         "file-transfer-completed": "File transfer completed",
         "ios-memory-limit": "Sending files to iOS is only possible up to 200 MB at once",
         "message-transfer-completed": "Message transfer completed",
-        "unfinished-transfers-warning": "There are unfinished transfers. Are you sure you want to close Campus Drop?",
+        "unfinished-transfers-warning": "There are unfinished transfers. Are you sure you want to close Peer Flow?",
         "rate-limit-join-key": "Rate limit reached. Wait 10 seconds and try again.",
         "selected-peer-left": "Selected peer left"
     },

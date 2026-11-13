@@ -25,3 +25,9 @@
    - Redesigned bottom "You are known as:" section: floating glass capsule dock with device avatar icon, interactive editable name chip, live pulsing network discovery dot, and responsive styling.
    - Bumped PWA service worker cache to `v2.1.0` (`campusdrop-cache-v2.1.0`) across frontend and backend.
    - End-to-end verified live on Vercel (`200 OK`) and Render (`live` status, WebSocket `ping/pong`).
+6. **Rebranding to Peer Flow & Wireless Wave Logo**:
+   - Renamed application to **Peer Flow** across the entire UI, HTML metadata, browser tab titles, and localization files.
+   - Redesigned top header brand icon to a sleek wireless peer broadcast wave icon (`(( • ))`) matching the user's photo.
+   - Generated matching SVG and PNG favicons with blue gradient squircle and crisp white broadcast waves.
+   - Updated backend signaling server `/health` endpoint to report `service: "Peer Flow Signaling Server"`.
+   - Bumped PWA service worker cache to `v2.2.0` (`peerflow-cache-v2.2.0`) and IndexedDB store to `peerflow_store`.

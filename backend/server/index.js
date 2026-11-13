@@ -183,4 +183,4 @@ if (!conf.signalingServer) {
     console.log("This instance does not include a signaling server. Clients on this instance connect to the following signaling server:", conf.signalingServer);
 }
 
-console.log('\nCampus Drop is running on port', conf.port);
+console.log('\nPeer Flow is running on port', conf.port);

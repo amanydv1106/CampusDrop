@@ -1,9 +1,11 @@
-const cacheVersion = 'v2.1.0';
-const cacheTitle = `campusdrop-cache-${cacheVersion}`;
+const cacheVersion = 'v2.2.0';
+const cacheTitle = `peerflow-cache-${cacheVersion}`;
 const relativePathsToCache = [
     './',
     'index.html',
     'manifest.json',
+    'images/favicon.svg',
+    'images/favicon-96x96.png',
     'styles/styles-main.css',
     'styles/styles-deferred.css',
     'scripts/browser-tabs-connector.js',
@@ -217,7 +219,7 @@ const evaluateRequestData = function (request) {
         const url = formData.get("url");
         const files = formData.getAll("allfiles");
 
-        const campusDropUrl = request.url;
+        const peerFlowUrl = request.url;
 
         if (files && files.length > 0) {
             let fileObjects = [];
@@ -228,7 +230,7 @@ const evaluateRequestData = function (request) {
                 });
             }
 
-            const DBOpenRequest = indexedDB.open('campusdrop_store');
+            const DBOpenRequest = indexedDB.open('peerflow_store');
             DBOpenRequest.onsuccess = e => {
                 const db = e.target.result;
                 for (let i = 0; i < fileObjects.length; i++) {
@@ -237,12 +239,12 @@ const evaluateRequestData = function (request) {
 
                     const objectStoreRequest = objectStore.add(fileObjects[i]);
                     objectStoreRequest.onsuccess = _ => {
-                        if (i === fileObjects.length - 1) resolve(campusDropUrl + '?share_target=files');
+                        if (i === fileObjects.length - 1) resolve(peerFlowUrl + '?share_target=files');
                     }
                 }
             }
             DBOpenRequest.onerror = _ => {
-                resolve(campusDropUrl);
+                resolve(peerFlowUrl);
             }
         }
         else {
@@ -252,7 +254,7 @@ const evaluateRequestData = function (request) {
             if (text) urlArgument += `&text=${text}`;
             if (url) urlArgument += `&url=${url}`;
 
-            resolve(campusDropUrl + urlArgument);
+            resolve(peerFlowUrl + urlArgument);
         }
     });
 }
