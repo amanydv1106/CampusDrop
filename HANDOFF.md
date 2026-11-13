@@ -18,9 +18,10 @@
    - Next.js production build (`frontend/.next`) builds and prerenders cleanly.
    - Backend automated tests verifying `/health` and WebSocket handshakes passing 100%.
    - Full test suite passing with zero warnings or errors.
-4. **Cloud Production Deployments & Cache Invalidation**:
-   - PWA Service Worker bumped to `v2.0.0` (`campusdrop-cache-v2.0.0`) and IndexedDB store updated to `campusdrop_store` to auto-purge legacy browser caches.
-   - Next.js root route served with `Cache-Control: no-cache, no-store, must-revalidate` for immediate live updates.
-   - Frontend deployed and verified live on Vercel: `https://campus-drop-two.vercel.app` (HTTP 200).
-   - Backend deployed and verified live on Render: `https://campus-drop-signaling.onrender.com` (status: `live`).
-   - WebSocket Signaling: `wss://campus-drop-signaling.onrender.com/server`.
+5. **Minimalist Header, Custom Rooms Logo & Bottom Dock Redesign**:
+   - Redesigned top-right Rooms button with custom interconnected 3-room network logo and gradient border glow.
+   - Removed About (`(i)`), Notification (bell), and Install App icons from header for an uncluttered navbar.
+   - Removed middle feature keyword chips (`Direct WebRTC`, `100% Encrypted`, `Zero Cloud Storage`) from the hero beacon card.
+   - Redesigned bottom "You are known as:" section: floating glass capsule dock with device avatar icon, interactive editable name chip, live pulsing network discovery dot, and responsive styling.
+   - Bumped PWA service worker cache to `v2.1.0` (`campusdrop-cache-v2.1.0`) across frontend and backend.
+   - End-to-end verified live on Vercel (`200 OK`) and Render (`live` status, WebSocket `ping/pong`).
