@@ -83,11 +83,13 @@
     onPwaInstallable(e) {
         if (!window.matchMedia('(display-mode: standalone)').matches) {
             // only display install btn when not installed
-            this.$headerInstallBtn.removeAttribute('hidden');
-            this.$headerInstallBtn.addEventListener('click', () => {
-                this.$headerInstallBtn.setAttribute('hidden', true);
-                e.prompt();
-            });
+            if (this.$headerInstallBtn) {
+                this.$headerInstallBtn.removeAttribute('hidden');
+                this.$headerInstallBtn.addEventListener('click', () => {
+                    this.$headerInstallBtn.setAttribute('hidden', true);
+                    e.prompt();
+                });
+            }
         }
         return e.preventDefault();
     }

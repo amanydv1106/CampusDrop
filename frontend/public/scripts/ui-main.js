@@ -174,6 +174,15 @@ class FooterUI {
         this.$displayName.addEventListener('focus', e => this._onFocusDisplayName(e));
         this.$displayName.addEventListener('blur', e => this._onBlurDisplayName(e));
 
+        const container = document.querySelector('.display-name-container');
+        if (container) {
+            container.addEventListener('click', (e) => {
+                if (e.target !== this.$displayName) {
+                    this.$displayName.focus();
+                }
+            });
+        }
+
         Events.on('display-name', e => this._onDisplayName(e.detail.displayName));
         Events.on('self-display-name-changed', e => this._insertDisplayName(e.detail));
         Events.on('evaluate-footer-badges', _ => this._evaluateFooterBadges());

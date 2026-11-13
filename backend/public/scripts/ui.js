@@ -2500,7 +2500,9 @@ class Notifications {
         this.$headerNotificationButton = $('notification');
         this.$downloadBtn = $('download-btn');
 
-        this.$headerNotificationButton.addEventListener('click', _ => this._requestPermission());
+        if (this.$headerNotificationButton) {
+            this.$headerNotificationButton.addEventListener('click', _ => this._requestPermission());
+        }
 
 
         Events.on('text-received', e => this._messageNotification(e.detail.text, e.detail.peerId));
@@ -2516,7 +2518,9 @@ class Notifications {
                     return;
                 }
                 Events.fire('notify-user', Localization.getTranslation("notifications.notifications-enabled"));
-                this.$headerNotificationButton.setAttribute('hidden', true);
+                if (this.$headerNotificationButton) {
+                    this.$headerNotificationButton.setAttribute('hidden', true);
+                }
             });
     }
 
